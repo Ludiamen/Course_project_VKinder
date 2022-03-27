@@ -1,5 +1,5 @@
 import vk_api
-import config
+import TOKEN_ID
 import random
 import time
 
@@ -10,7 +10,7 @@ from vk_api.utils import get_random_id
 from log_messages.log_messages import logging
 from vk_kinder.vk_kinder import VKinder
 
-from My_database import Session, User, Views
+from my_database import Session, User, Views
 from sqlalchemy.sql import exists
 
 
@@ -234,12 +234,12 @@ def user_search(vk, user, session):
 
 
 def main():
-    vk_session = vk_api.VkApi(token=config.access_token)
+    vk_session = vk_api.VkApi(token=TOKEN_ID.access_token)
 
-    this_poll = VkBotLongPoll(vk_session, config.group_id)
+    this_poll = VkBotLongPoll(vk_session, TOKEN_ID.group_id)
     vk = vk_session.get_api()
 
-    user_session = vk_api.VkApi(token=config.user_token)
+    user_session = vk_api.VkApi(token=TOKEN_ID.user_token)
     session = user_session.get_api()
 
     while True:
